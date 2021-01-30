@@ -5,7 +5,8 @@ public class InvocableQueueableCreateLingLingQR {
         classSession = ClassSessionList[0];
         System.debug('classSession Id: ' + classSession.Id);
         System.debug('classSession Name: ' + classSession.Name);
-        ID jobID = System.enqueueJob(new QueueableCreateLingLingQR(classSession.Id));
+        List<String> l = new List<String>{'a', 'b', 'c'};
+        ID jobID = System.enqueueJob(new QueueableCreateLingLingQR(l));
         System.debug('jobID: ' + jobID);
         AsyncApexJob jobInfo = [SELECT Status, NumberOfErrors FROM AsyncApexJob WHERE Id=:jobID];
         System.debug('jobInfo: ' + jobInfo);

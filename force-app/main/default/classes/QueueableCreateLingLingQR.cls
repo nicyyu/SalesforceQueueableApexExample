@@ -1,10 +1,14 @@
 public class QueueableCreateLingLingQR implements Queueable {
-    public static String idReceived = '';
+    private String idReceived;
+
+    public QueueableCreateLingLingQR(List<String> IdInput) {
+        System.debug('IdInput: ' + IdInput[0]);
+        this.idReceived = IdInput[0];
+    }
 
     public void execute(QueueableContext context) {
+        System.debug('context: ' + context);
         System.debug('idReceived: ' + idReceived);
-        Account a = new Account(Name='Acme12',Phone='(415) 555-1212');
-        insert a;
         CreateLingLingQR(idReceived);
     }
 
@@ -14,13 +18,4 @@ public class QueueableCreateLingLingQR implements Queueable {
         insert a;
     }
 
-    public QueueableCreateLingLingQR(String IdInput) {
-        System.debug('IdInput: ' + IdInput);
-        if ( IdInput == null ) {
-            idReceived = '';
-        }
-        if ( IdInput != null ){
-            idReceived = IdInput;
-        }
-    }
 }
